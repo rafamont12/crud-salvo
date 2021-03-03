@@ -8,6 +8,15 @@ instance.interceptors.response.use(
     (error) => {
         if (error.response.status === 422) {
             let errors = Object.values(error.response.data.errors).map(item => item.join(''));
+            errors.forEach(error => {
+                Vue.notify({
+                    title: 'Wrong fields!',
+                    text: error,
+                    group: 'notifications',
+                    duration: 3500,
+                    type: 'error',
+                })
+            })
         }
         else {
             Vue.notify({
@@ -15,7 +24,7 @@ instance.interceptors.response.use(
                 title: 'Request error!',
                 group: 'notifications',
                 duration: 3500,
-                type: 'error|warn|success',
+                type: 'error',
             });
         }
 

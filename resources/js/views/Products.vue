@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label for="createFormProductQuantity">Quantity:</label>
-                                <input type="number" v-model="createForm.quantity" class="form-control" id="createFormProductQuantity">
+                                <input type="number" v-model="createForm.quantity" class="form-control" id="createFormProductQuantity" min="1" max="99">
                             </div>
 
                             <div class="form-group">
@@ -78,7 +78,7 @@
 
                             <div class="form-group">
                                 <label for="editFormProductQuantity">Quantity:</label>
-                                <input type="number" v-model="editForm.quantity" class="form-control" id="editFormProductQuantity">
+                                <input type="number" v-model="editForm.quantity" class="form-control" id="editFormProductQuantity" min="1" max="99">
                             </div>
 
                             <div class="form-group">

@@ -37937,7 +37937,9 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "number",
-                          id: "createFormProductQuantity"
+                          id: "createFormProductQuantity",
+                          min: "1",
+                          max: "99"
                         },
                         domProps: { value: _vm.createForm.quantity },
                         on: {
@@ -38044,7 +38046,9 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "number",
-                          id: "editFormProductQuantity"
+                          id: "editFormProductQuantity",
+                          min: "1",
+                          max: "99"
                         },
                         domProps: { value: _vm.editForm.quantity },
                         on: {
@@ -51655,13 +51659,22 @@ instance.interceptors.response.use(function (response) {
     var errors = Object.values(error.response.data.errors).map(function (item) {
       return item.join('');
     });
+    errors.forEach(function (error) {
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.notify({
+        title: 'Wrong fields!',
+        text: error,
+        group: 'notifications',
+        duration: 3500,
+        type: 'error'
+      });
+    });
   } else {
     vue__WEBPACK_IMPORTED_MODULE_0___default.a.notify({
       text: "".concat(error.response.data.message),
       title: 'Request error!',
       group: 'notifications',
       duration: 3500,
-      type: 'error|warn|success'
+      type: 'error'
     });
   }
 
